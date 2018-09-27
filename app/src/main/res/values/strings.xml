@@ -12,4 +12,39 @@
     <string name="data_reservasi">Data Reservasi</string>
     <string name="tagihan">Tagihan</string>
     <string name="bantuan">Bantuan</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="alamat">Alamat</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="password">Password</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="punya_akun">Punya akun?</string>
+    <string name="masuk">Masuk</string>
+    <string name="login">Login</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="register">Register</string>
+
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

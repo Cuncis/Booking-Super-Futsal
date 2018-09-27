@@ -14,11 +14,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     CardView cardProfil, cardDaftarLokasi, cardLokasiTerdekat, cardTagihan;
+    TextView textNameOfPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        textNameOfPerson = findViewById(R.id.text_nameOfPerson);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity
         cardDaftarLokasi.setOnClickListener(this);
         cardLokasiTerdekat.setOnClickListener(this);
         cardTagihan.setOnClickListener(this);
+
+        textNameOfPerson.setText(getIntent().getStringExtra("username"));
     }
 
     @Override
