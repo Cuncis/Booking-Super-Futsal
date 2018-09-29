@@ -15,12 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     CardView cardProfil, cardDaftarLokasi, cardLokasiTerdekat, cardTagihan;
-    TextView textNameOfPerson;
+    TextView textNameOfPerson, textDrawerUsername, textDrawerEmail;
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //for change text or image from navigationView
+        navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
         textNameOfPerson = findViewById(R.id.text_nameOfPerson);
+        textDrawerUsername = headerView.findViewById(R.id.text_username);
+        textDrawerEmail = headerView.findViewById(R.id.text_email);
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         cardTagihan.setOnClickListener(this);
 
         textNameOfPerson.setText(getIntent().getStringExtra("username"));
+        textDrawerUsername.setText(getIntent().getStringExtra("username"));
+        textDrawerEmail.setText(getIntent().getStringExtra("email"));
     }
 
     @Override
@@ -98,11 +110,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            finish();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             return true;
+        } else if (id == R.id.action_settings) {
+            Toast.makeText(this, "Action setting clicked :)", Toast.LENGTH_SHORT).show();
+        } else {
+            return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

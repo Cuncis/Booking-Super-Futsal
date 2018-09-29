@@ -24,6 +24,7 @@
     <string name="login">Login</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="register">Register</string>
+    <string name="log_out">Log Out</string>
 
 </resources>
 

@@ -75,22 +75,27 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = editPassword.getText().toString();
                 String rePass = editConfirmPassword.getText().toString();
 
-                if (!pass.equals(rePass)) {
-                    Toast.makeText(RegisterActivity.this, "Password tidak cocok!", Toast.LENGTH_SHORT).show();
+                if(user.isEmpty() || email.isEmpty() || alamat.isEmpty() || pass.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Harap diisi semua kawan :)", Toast.LENGTH_SHORT).show();
                 } else {
-                    Akun akun = new Akun();
-                    akun.setUsername(user);
-                    akun.setEmail(email);
-                    akun.setAlamat(alamat);
-                    akun.setJenisKelamin(jk);
-                    akun.setPassword(pass);
+                    if (!pass.equals(rePass)) {
+                        Toast.makeText(RegisterActivity.this, "Password tidak cocok!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Akun akun = new Akun();
+                        akun.setUsername(user);
+                        akun.setEmail(email);
+                        akun.setAlamat(alamat);
+                        akun.setJenisKelamin(jk);
+                        akun.setPassword(pass);
 
-                    dbHelper.insertAkun(akun);
+                        dbHelper.insertAkun(akun);
 
-                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    Toast.makeText(RegisterActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        Toast.makeText(RegisterActivity.this, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-
             }
         });
 

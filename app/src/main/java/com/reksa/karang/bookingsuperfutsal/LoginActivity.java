@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reksa.karang.bookingsuperfutsal.database.DatabaseHelper;
+import com.reksa.karang.bookingsuperfutsal.model.Akun;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,10 +19,13 @@ public class LoginActivity extends AppCompatActivity {
 
     DatabaseHelper dbHelper;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        final Akun akun = new Akun();
 
         dbHelper = new DatabaseHelper(this);
 
@@ -46,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (pass.equals(password)) {
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     i.putExtra("username", user);
+                    i.putExtra("email", dbHelper.getEmail(user));
+
+                    if (user.equals("admin") && pass.equals("admin")) {
+
+                    }
+
                     startActivity(i);
                 } else if (user.equals("") && pass.equals("")){
                     Toast.makeText(LoginActivity.this, "Tidak boleh ada field yang kosong!", Toast.LENGTH_SHORT).show();
